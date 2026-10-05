@@ -1,0 +1,213 @@
+{
+  "site": {
+    "chapterName": "ACM NMIET",
+    "fullTitle": "ACM NMIET Student Chapter",
+    "tagline": "STUDENTS • TECHNOLOGY • COMMUNITY",
+    "established": "2025",
+    "college": "Nutan Maharashtra Institute of Engineering & Technology",
+    "location": "NMIET, Pune, Maharashtra, India",
+    "email": "acm@nmiet.ac.in"
+  },
+  "hero": {
+    "badge": "TECHNOLOGY • CREATIVITY • COMMUNITY",
+    "titleLine1": "Design the future.",
+    "titleLine2": "Build what matters.",
+    "subtitle": "We are a community of students building technology, creativity and community — together.",
+    "primaryCta": "Explore ACM NMIET",
+    "secondaryCta": "View Events",
+    "stats": [
+      { "value": "50+", "label": "Events", "icon": "Calendar" },
+      { "value": "200+", "label": "Members", "icon": "Users" },
+      { "value": "20+", "label": "Projects", "icon": "Code2" }
+    ],
+    "codeSnippets": [
+      "def innovate():",
+      "  for idea in people:",
+      "    create(idea)",
+      "    return better()"
+    ]
+  },
+  "whatWeBuild": {
+    "eyebrow": "WHAT WE BUILD",
+    "heading": "What we build",
+    "description": "From hands-on workshops to large-scale hackathons, we create opportunities for students to learn, collaborate and turn ideas into real impact.",
+    "doodle": "BETTER STUDENTS\nBIGGER IMPACT",
+    "cards": [
+      {
+        "id": "wb1",
+        "title": "Workshops",
+        "description": "Build skills, explore new tools, and learn from industry experts.",
+        "icon": "BookOpen",
+        "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": "wb2",
+        "title": "Hackathons",
+        "description": "Solve real-world problems, ship projects, make an impact.",
+        "icon": "Code2",
+        "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": "wb3",
+        "title": "Community",
+        "description": "Meet like-minded peers, share ideas, grow together.",
+        "icon": "Users",
+        "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "ABOUT ACM NMIET",
+    "heading": "Who we are",
+    "description": "ACM NMIET is the student chapter of the Association for Computing Machinery, the world's largest computing society. We bring together curious minds, creative thinkers and problem solvers to build a stronger tech community on campus.",
+    "values": [
+      {
+        "title": "Learning & Growth",
+        "icon": "GraduationCap",
+        "description": "Continuous skill development through workshops, bootcamps, and mentorship."
+      },
+      {
+        "title": "Collaboration & Teamwork",
+        "icon": "Handshake",
+        "description": "Cross-disciplinary teams building innovative solutions together."
+      },
+      {
+        "title": "Innovation & Impact",
+        "icon": "Lightbulb",
+        "description": "Turning ideas into real-world applications that make a difference."
+      },
+      {
+        "title": "Community & Belonging",
+        "icon": "Heart",
+        "description": "An inclusive space where every student finds their tribe."
+      }
+    ],
+    "mission": {
+      "heading": "Our Mission",
+      "text": "To empower students with technology, creativity and leadership skills, and create opportunities for meaningful learning and real-world impact.",
+      "quote": "Technology is not just about machines, it's about people.",
+      "quoteAuthor": "ACM"
+    }
+  },
+  "events": {
+    "eyebrow": "EVENTS",
+    "heading": "Discover. Learn. Grow.",
+    "description": "From workshops to hackathons, our events are designed to help you build skills, meet peers and turn your ideas into reality.",
+    "tabs": ["All", "Workshops", "Hackathons", "Talks", "Community"],
+    "items": [
+      {
+        "id": "e1",
+        "title": "Web Development Bootcamp",
+        "category": "Workshops",
+        "date": "04 Oct 2025",
+        "time": "11:00 AM",
+        "location": "Seminar Hall",
+        "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+        "description": "Hands-on workshop on building modern web applications with React, TypeScript, and Tailwind CSS."
+      },
+      {
+        "id": "e2",
+        "title": "24-Hour Hackathon",
+        "category": "Hackathons",
+        "date": "18 Oct 2025",
+        "time": "9:00 AM",
+        "location": "Computer Lab",
+        "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
+        "description": "Build innovative solutions to real-world campus challenges in 24 hours."
+      },
+      {
+        "id": "e3",
+        "title": "Tech Talk: Build for Impact",
+        "category": "Talks",
+        "date": "25 Oct 2025",
+        "time": "11:00 AM",
+        "location": "Auditorium",
+        "image": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80",
+        "description": "Keynote and panel discussion on engineering for social impact."
+      },
+      {
+        "id": "e4",
+        "title": "Open Source Sprint",
+        "category": "Community",
+        "date": "02 Nov 2025",
+        "time": "2:00 PM",
+        "location": "Hybrid / Discord",
+        "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
+        "description": "Collaborative contribution workshop for trending open-source projects."
+      }
+    ]
+  },
+  "team": {
+    "eyebrow": "OUR TEAM",
+    "heading": "People behind our success.",
+    "description": "A diverse group of students, dreamers and doers — united by a shared passion for technology and community.",
+    "tabs": ["All", "Faculty", "Core Team", "Technical", "Design"],
+    "members": [
+      {
+        "id": "t0",
+        "name": "Dr. Subhashish Patel",
+        "role": "Faculty Sponsor & HOD Computer Engg",
+        "category": "Faculty",
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+        "social": { "linkedin": "#", "email": "head.comp@nmiet.ac.in" }
+      },
+      {
+        "id": "t1",
+        "name": "Aarav Sharma",
+        "role": "President",
+        "category": "Core Team",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+        "social": { "linkedin": "#", "github": "#", "twitter": "#" }
+      },
+      {
+        "id": "t2",
+        "name": "Isha Verma",
+        "role": "Vice President",
+        "category": "Core Team",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
+        "social": { "linkedin": "#", "github": "#", "twitter": "#" }
+      },
+      {
+        "id": "t3",
+        "name": "Rohan Gupta",
+        "role": "Technical Lead",
+        "category": "Technical",
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+        "social": { "linkedin": "#", "github": "#", "twitter": "#" }
+      },
+      {
+        "id": "t4",
+        "name": "Sneha Patil",
+        "role": "Design Lead",
+        "category": "Design",
+        "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+        "social": { "linkedin": "#", "github": "#", "twitter": "#" }
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "CONTACT",
+    "heading": "Get in touch.",
+    "description": "Have a question, idea or just want to say Hi? We'd love to hear from you!",
+    "email": "acm@nmiet.ac.in",
+    "location": "NMIET, Greater Noida\nUttar Pradesh, India",
+    "image": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80"
+  },
+  "loader": {
+    "labels": {
+      "topLeft": "ACM NMIET STUDENT CHAPTER",
+      "topRight": "EST. 2025 · CHAPTER BOOT",
+      "systemBoot": "SYSTEM BOOT",
+      "bottomLeft": "INNOVATING FOR THE FUTURE // NMIET"
+    },
+    "messages": [
+      "INITIALIZING ACM NMIET CHAPTER",
+      "LOADING CHAPTER JOURNEY // HOME -> COLLEGE",
+      "BOARDING THE BUS // 034%",
+      "ENTERING THE METRO LINE",
+      "CROSSING THE WATER // FOCUS AREAS",
+      "ARRIVING AT NMIET CAMPUS",
+      "OPENING THE DOOR // WELCOME"
+    ]
+  }
+}

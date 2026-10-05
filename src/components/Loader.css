@@ -1,0 +1,130 @@
+/* High-Tech System Boot Overlay */
+.acm-boot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #070A11;
+  color: #F8FAFC;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem;
+  user-select: none;
+  overflow: hidden;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 640px) {
+  .acm-boot-overlay {
+    padding: 1.5rem;
+  }
+}
+
+/* Subtle background grid pattern */
+.acm-boot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Scanline effect */
+.acm-boot-scanline {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(56, 189, 248, 0.03) 50%,
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 100% 8px;
+  pointer-events: none;
+}
+
+/* Top & Bottom layout rows */
+.acm-boot-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1rem;
+}
+
+.acm-boot-console {
+  position: relative;
+  z-index: 10;
+  max-width: 680px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 100%;
+}
+
+.acm-boot-logs {
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Thin progress fill line */
+.acm-boot-line-track {
+  width: 100%;
+  max-width: 480px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 1.5rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.acm-boot-line-fill {
+  height: 100%;
+  background: #38BDF8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+  transition: width 0.08s ease-out;
+  border-radius: 9999px;
+}
+
+.acm-boot-footer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+}
+
+/* Large 3-Digit Counter in Bottom Right */
+.acm-boot-counter {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+/* Smooth exit transition */
+.acm-boot-overlay.acm-boot-exit {
+  opacity: 0;
+  transform: scale(0.985);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acm-boot-overlay.acm-boot-exit {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+  }
+}

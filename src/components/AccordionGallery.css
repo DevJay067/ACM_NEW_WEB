@@ -1,0 +1,110 @@
+.accordion-gallery {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  gap: 12px;
+}
+
+.accordion-gallery--horizontal {
+  flex-direction: row;
+}
+
+.accordion-gallery--vertical {
+  flex-direction: column;
+}
+
+.accordion-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  flex: 1;
+  transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease;
+  will-change: flex, transform;
+}
+
+.accordion-item--grayscale .accordion-item__image {
+  filter: grayscale(80%) brightness(0.9);
+  transition: filter 0.5s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion-item:hover .accordion-item__image,
+.accordion-item--active .accordion-item__image {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.04);
+}
+
+.accordion-item__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.accordion-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12, 18, 32, 0.85) 0%, rgba(12, 18, 32, 0.2) 60%, transparent 100%);
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+}
+
+.accordion-item:hover .accordion-item__overlay,
+.accordion-item--active .accordion-item__overlay {
+  opacity: 0.95;
+}
+
+.accordion-item__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 2;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.accordion-item__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  margin-bottom: 8px;
+}
+
+.accordion-item__label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.accordion-item__accent-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--accent-color, #3b82f6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.accordion-item:hover .accordion-item__accent-bar,
+.accordion-item--active .accordion-item__accent-bar {
+  opacity: 1;
+}

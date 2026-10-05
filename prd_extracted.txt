@@ -1,0 +1,256 @@
+=== PAGE 1 ===
+PRD: ACM Student Chapter Scroll-Journey
+Website
+Audience for this document: an AI coding agent that will build or extend the website. It is
+written to be self-contained: all copy is included in the Content Spec, so no other file is
+needed.
+1. Goal
+Build a single-page, scroll-driven website for the ACM student chapter. As the visitor
+scrolls, a boy travels from home to college (walk, bus, metro, boat, college door). Each stop
+of the journey reveals one section of the chapter's content. The finished site must be fast,
+readable on phones, and easy for the chapter team to edit.
+Success means: all copy in section 6 appears on the site, word for word; the journey
+animation runs smoothly; and every section is reachable from the navigation.
+2. Scope
+In scope: the single scroll page, navigation, all content sections below, the Join and Notify
+Me forms (front end only), a Team section at the end, responsive layout, accessibility
+basics, a content file the team can edit.
+Out of scope for v1: user accounts, a database, an admin panel, payments, a blog, dynamic
+event loading from an API.
+3. Recommended stack (defaults, change only if the project already
+uses something else)
+Vite + React (or plain HTML/CSS/JS if the existing site is static)
+GSAP + ScrollTrigger for the journey; CSS for everything else
+Illustrations as inline SVG or optimized WebP/PNG; no video
+Tailwind or plain CSS with design tokens (see section 5)
+Form handling through a placeholder endpoint or a free form service (Formspree,
+Google Forms embed); keep it swappable
+PRD: ACM Student Chapter Scroll-Journey Website
+Page 1 of 8
+=== PAGE 2 ===
+4. Journey map (proposed, adjustable)
+The scene changes (bus, metro, boat) are the transitions between sections. Content
+cards slide in over or beside the moving scene. The boy character moves along a path as
+scroll progress changes.
+5. Global requirements
+Navigation: fixed top bar with links About, Events, Focus Areas, Vision, Mission, Team,
+Join. Clicking a link scrolls to that stop and plays the journey up to it. Show a thin scroll-
+progress bar.
+Design tokens (define as CSS variables, tune after seeing the reference photo): one
+display font and one body font; a background, a text color, one accent, one muted color;
+spacing scale 8, 16, 24, 48, 96 px; light and dark values.
+Responsive: design for 390 px wide first, then tablet and desktop. On small screens
+simplify the journey (smaller scene, fewer layers) but keep the order of stops.
+Performance: target Lighthouse performance 85+ on mobile; lazy-load images below the
+first scene; animate only transform and opacity; keep total JS under about 300 KB
+gzipped.
+Accessibility: honor prefers-reduced-motion (no scroll-scrubbed animation, stack
+sections normally); all text at least WCAG AA contrast; real headings in order; alt text on
+every meaningful image; keyboard focus visible; forms with labels.
+Stop Scene Section shown Content
+source
+0 Home, boy leaves the door Hero 6.1
+1 Catches the bus About the chapter + What is ACM 6.2, 6.3
+2 Walks to the station, rides
+the metro
+Roadmap + Upcoming Activities
+(events)
+6.4, 6.5
+3 Crosses by boat Focus Areas 6.6
+4 Walks up to the college Vision and Mission 6.7
+5 Opens the college door Join CTA, then Team (members
+appear one by one)
+6.8, 6.9
+PRD: ACM Student Chapter Scroll-Journey Website
+Page 2 of 8
+=== PAGE 3 ===
+SEO: page title "ACM Student Chapter"; meta description from the About paragraph;
+semantic sections with ids (hero, about, events, focus, vision, mission, team, join).
+6. Content Spec (use word for word)
+6.1 Hero (id: hero)
+Eyebrow: Official Student Chapter
+H1: ACM NMIET Student Chapter
+Subtitle: Innovating for the Future | Est. 2025
+Buttons: Explore More (goes to the About stop), View Events (goes to the Events stop)
+Nav labels: About, Vision, Mission, Roadmap
+6.2 About (id: about)
+Heading: Welcome to ACM NMIET
+Established in 2025, the ACM NMIET Student Chapter is dedicated to fostering technical
+growth and student excellence through innovation and collaboration.
+We provide a platform for students to explore the latest in computing, connect with
+industry experts, and build projects that matter. Our community thrives on the curiosity
+of our members and the drive to solve real-world problems.
+Stats (animated counters): 2025 Established; 15+ Active Members; 20+ Events Yearly.
+6.3 What is ACM (id: what-is-acm)
+Heading: What is ACM? Subheading: Understanding the world's largest educational and
+scientific computing society.
+Overview, Association for Computing Machinery:
+The Association for Computing Machinery (ACM) is the world's largest educational and
+scientific computing society, uniting educators, researchers, and professionals to inspire
+dialogue, share resources, and address the field's challenges. ACM strengthens the
+computing profession's collective voice through strong leadership, promotion of the
+highest standards, and recognition of technical excellence.
+PRD: ACM Student Chapter Scroll-Journey Website
+Page 3 of 8
+=== PAGE 4 ===
+Founded at the dawn of the computer age, ACM’s reach extends to every part of the
+globe, with more than half of its 100,000 members residing outside the United States. Its
+growing membership has led to Councils in Europe, India, and China, fostering networking
+opportunities that strengthen ties within and across countries and technical
+communities.
+ACM provides the computing field's premier Digital Library and serves its members and
+the computing profession with leading-edge publications, conferences, and career
+resources.
+Stats: 1947 Founded; 100k+ Members; Global Chapters.
+Why ACM Matters for Students. Intro: Joining an ACM student chapter opens doors to a
+world of opportunities in computing.
+Networking: Connect with peers, mentors, and industry professionals. Build
+relationships that can last a lifetime and help your career.
+Career Growth: Access exclusive job boards, career advice, and professional
+development resources tailored for computing students.
+Research Access: Gain full access to the ACM Digital Library, the world's most
+comprehensive database of computing literature.
+Mentorship: Learn from distinguished speakers and participate in mentorship
+programs that guide your academic journey.
+Events & Competitions: Participate in hackathons, coding contests like ICPC, and
+technical workshops organized by local chapters.
+Skill Building: Develop leadership, management, and technical skills by taking on roles
+within the student chapter committee.
+About ACM Student Chapters:
+ACM Student Chapters are the local hubs of activity for ACM members on university
+campuses worldwide. They serve as a gateway to the larger professional network and
+provide a platform for students to organize technical talks, workshops, hackathons, and
+social events.
+By joining the NMIET Student Chapter, you become part of this global family, gaining
+resources to enhance your learning beyond the classroom and preparing you for a
+successful career in technology.
+Explore ACM Resources (external links, open in a new tab): ACM.org, Official Website
+(https://www.acm.org); Digital Library, Research Database (https://dl.acm.org); Learning
+Center, Courses & Webinars (https://learning.acm.org); Career Center, Job Board
+PRD: ACM Student Chapter Scroll-Journey Website
+Page 4 of 8
+=== PAGE 5 ===
+(https://jobs.acm.org).
+6.4 Roadmap (id: roadmap, shown during the metro ride)
+Heading: Our Roadmap for Growth. Subheading: Key initiatives planned for the upcoming
+academic year.
+Technical Workshops: React & Tailwind Bootcamp (Q1 Foundation Series); AI/ML Intro
+Workshop (Q2 Specialized Track)
+Guest Lectures: Future of Cloud Computing (Speaker from AWS)
+Competitions: CodeWars 2025 (Inter-college Coding Contest); Design-a-thon (UI/UX
+Sprint)
+Community: Open Source Meetup (Hacktoberfest Prep)
+6.5 Upcoming Activities (id: events, metro ride, after the roadmap)
+Heading: Upcoming Activities. Subheading: Exciting initiatives we're planning for the
+semester. Stay ahead of the curve with our technical roadmap.
+Note from the team. What's in the pipeline? We are currently curating a series of technical
+workshops and hackathons. Sign up to get notified as soon as dates are confirmed.
+Form: one email field, button Notify Me. Success message: You're on the list! We'll notify
+you about upcoming events. Helper text: No spam, just updates on upcoming tech events.
+Planned Activities: filter tabs All, Workshops, Competitions, Guest Lectures. The event
+list is empty in v1; render a friendly empty state and read events from a simple events
+array in the content file so the team can add them later.
+6.6 Focus Areas (id: focus, shown during the boat ride)
+Heading: Our Focus Areas. Subheading: Explore the diverse technical domains where we
+learn, build, and grow together. We focus on practical skills that bridge the gap between
+academia and industry.
+Section heading: Technical Domains We're Passionate About. Intro: At ACM NMIET, we
+don't just talk about technology; we dive deep. From building scalable applications to
+securing digital infrastructures, our focus areas cover the most vital skills in today's tech
+landscape.
+Six cards, each with a status badge and a technology tag list:
+PRD: ACM Student Chapter Scroll-Journey Website
+Page 5 of 8
+=== PAGE 6 ===
+Web & App Dev, Active. Building responsive websites and cross-platform mobile
+applications using modern frameworks and best practices. Technologies: React,
+Node.js, Flutter
+AI & Machine Learning, Active. Exploring the frontiers of intelligence, training data
+models, and implementing predictive algorithms to solve real problems. Technologies:
+Python, TensorFlow, PyTorch
+Competitive Coding, Active. Mastering algorithms and data structures to efficiently
+solve complex coding challenges and excel in competitions. Technologies: C++, Java,
+DSA
+Cybersecurity, Coming Soon. Learning to protect systems, networks, and programs
+from digital attacks through ethical hacking and cryptography. Technologies: Ethical
+Hacking, Linux
+UI/UX & Design, Active. Designing intuitive, accessible, and aesthetically pleasing user
+interfaces and seamless user experiences. Technologies: Figma, Prototyping
+Data Science, Planned. Unlocking actionable insights from raw data to drive decision-
+making and business innovation through analytics. Technologies: Pandas, SQL, NumPy
+Closing call to action: Ready to learn with us? Join the ACM NMIET Chapter today and
+start your journey in one of these domains. Button: Join ACM Chapter.
+6.7 Vision and Mission (ids: vision, mission, college approach)
+Our Vision: "To be a leading center of innovation where technology meets creativity,
+empowering students to shape the digital future."
+Global Recognition: Connecting our members with the worldwide ACM network for
+opportunities and exposure.
+Student Excellence: Cultivating a standard of high academic and practical
+performance across all disciplines.
+Industry Integration: Bridging the gap between academic curriculum and real-world
+industrial requirements.
+Our Mission: Empowering students through technology, mentorship, and practical
+experience.
+We strive to create an inclusive environment that encourages learning, sharing, and
+building together. Button: Join Our Mission.
+Skill Development: Regular workshops on emerging tech stacks.
+Research: Encouraging participation in research papers and conferences.
+PRD: ACM Student Chapter Scroll-Journey Website
+Page 6 of 8
+=== PAGE 7 ===
+Peer Learning: Seniors mentoring juniors in a collaborative ecosystem.
+Networking: Connecting with alumni and professionals.
+6.8 Join (id: join, at the college door)
+The source site links its Join button to a separate Join page whose text was not captured.
+For v1, the door opens to a short form: name, email, year and branch, a Join button, and a
+success message. Mark the exact copy as TODO for the team to supply.
+6.9 Team (id: team, after the door opens)
+After the door opens, member cards appear one by one as the user keeps scrolling. Team
+names, roles and photos were not provided: build the component from a members array
+(name, role, photo, optional links) and ship with 4 clearly marked placeholder members.
+7. Content file (so the team can edit without touching components)
+Create one file, content.json (or content.ts), with these top-level keys: site (chapterName,
+tagline, established), hero, about, whatIsAcm, roadmap, events, focusAreas, vision,
+mission, join, team, links. Components must read all text from this file; no copy hard-
+coded in components.
+8. Animation spec
+One master GSAP timeline scrubbed by ScrollTrigger, with a labeled position per stop
+(home, bus, metro, boat, college, door).
+The boy moves along an SVG path; at each transport stop the scene background swaps
+with a cross-fade or slide, and a vehicle element (bus, metro, boat) moves across.
+Content cards enter with opacity and a short upward translate; each plays once, not on
+every scroll.
+Pin the scene during a stop only as long as its content needs (about 100 to 200 vh).
+Refresh ScrollTrigger on resize; kill timelines on unmount.
+PRD: ACM Student Chapter Scroll-Journey Website
+Page 7 of 8
+=== PAGE 8 ===
+9. Assets needed from the team
+Reference photo for the theme; chapter logo; brand colors if any; character and scene
+illustrations (or approval to draw simple SVG ones); real team list with photos; event
+details when confirmed; the Join page copy.
+10. Acceptance criteria
+1. Every string in section 6 appears on the page exactly as written.
+2. Navigation links scroll to the right stop; the progress bar tracks scroll.
+3. Stats counters animate once when in view.
+4. Focus Areas cards show the correct status badge for each domain.
+5. Notify Me and Join forms validate email and show the success messages.
+6. Works at 390 px, 768 px and 1440 px with no horizontal scroll.
+7. With reduced motion on, the page is a plain stacked layout with all content readable.
+8. Lighthouse mobile: performance 85+, accessibility 95+.
+11. Build order for the AI
+1. Scaffold the project and content.json with all copy from section 6.
+2. Build static sections in order with the design tokens, no animation.
+3. Add navigation, progress bar and the forms.
+4. Add the scene layers and the master scroll timeline.
+5. Add the Team reveal and the door transition.
+6. Optimize, test the acceptance criteria, fix.
+After each step, run the site and confirm it before moving on.
+12. Open questions for the team
+1. Chapter name on the site: the copy above says NMIET; change the chapterName in
+content.json if the site is for another college.
+2. Is the journey order in section 4 correct, or should Vision and Mission come earlier?
+3. What should the Join form do with submissions: email, Google Sheet, or a database
+later?
+PRD: ACM Student Chapter Scroll-Journey Website
+Page 8 of 8
