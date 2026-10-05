@@ -22,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
     { label: 'Home', id: 'hero' },
     { label: 'About', id: 'about' },
     { label: 'Events', id: 'events' },
+    { label: 'Domains', id: 'focus-areas' },
     { label: 'Team', id: 'team' },
     { label: 'Contact', id: 'contact' },
   ];
@@ -42,114 +43,65 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate }) => 
           brightness={60}
           opacity={0.9}
           blur={12}
-          displace={5}
-          backgroundOpacity={0.18}
-          saturation={1.4}
+          displace={0}
+          backgroundOpacity={0.25}
+          saturation={1.3}
           distortionScale={-80}
           className="w-full shadow-sm"
         >
           <nav className="flex items-center justify-between w-full px-2 py-1 sm:px-3">
-          {/* Logo */}
-          <button
-            onClick={() => handleClick('hero')}
-            className="flex items-center gap-2 cursor-pointer border-none bg-transparent py-0.5"
-          >
-            <img
-              src="/acm-logo.png"
-              alt="ACM NMIET Student Chapter"
-              className="h-8 sm:h-9 w-auto object-contain"
-            />
-          </button>
-
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-0.5">
+            {/* Logo */}
             <button
               onClick={() => handleClick('hero')}
-              className={`px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all cursor-pointer border-none ${
-                activeSection === 'hero'
-                  ? 'text-[#2563EB] bg-blue-50/80'
-                  : 'text-[#64748B] hover:text-[#0C1220] hover:bg-[#F1F0EC]'
-              }`}
+              className="flex items-center gap-2 cursor-pointer border-none bg-transparent py-0.5"
             >
-              Home
+              <img
+                src="/acm-logo.png"
+                alt="ACM NMIET Student Chapter"
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
             </button>
 
+            {/* Desktop Links */}
+            <div className="hidden md:flex items-center gap-1">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleClick(item.id)}
+                    className={`px-3 py-1.5 rounded-lg text-[13px] font-semibold transition-all cursor-pointer border-none ${
+                      isActive
+                        ? 'text-[#2563EB] bg-blue-50/90 font-bold'
+                        : 'text-[#555555] hover:text-[#111111] hover:bg-[#F1F0EC]'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* CTA Button */}
+            <div className="hidden sm:block">
+              <button
+                onClick={() => handleClick('contact')}
+                className="btn-primary text-[13px] py-2 px-4 shadow-sm hover:shadow-md transition-all font-bold"
+              >
+                <span>Join ACM</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            {/* Mobile Toggle */}
             <button
-              onClick={() => handleClick('about')}
-              className={`px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all cursor-pointer border-none ${
-                activeSection === 'about'
-                  ? 'text-[#2563EB] bg-blue-50/80'
-                  : 'text-[#64748B] hover:text-[#0C1220] hover:bg-[#F1F0EC]'
-              }`}
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden p-1.5 text-[#64748B] hover:text-[#0C1220] cursor-pointer border-none bg-transparent rounded-lg hover:bg-[#F1F0EC]"
+              aria-label="Toggle menu"
             >
-              About
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
-
-            <button
-              onClick={() => handleClick('whatwebuild')}
-              className={`px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all cursor-pointer border-none ${
-                activeSection === 'whatwebuild'
-                  ? 'text-[#2563EB] bg-blue-50/80'
-                  : 'text-[#64748B] hover:text-[#0C1220] hover:bg-[#F1F0EC]'
-              }`}
-            >
-              Domains
-            </button>
-
-            <button
-              onClick={() => handleClick('events')}
-              className={`px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all cursor-pointer border-none ${
-                activeSection === 'events'
-                  ? 'text-[#2563EB] bg-blue-50/80'
-                  : 'text-[#64748B] hover:text-[#0C1220] hover:bg-[#F1F0EC]'
-              }`}
-            >
-              Events
-            </button>
-
-            <button
-              onClick={() => handleClick('team')}
-              className={`px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all cursor-pointer border-none ${
-                activeSection === 'team'
-                  ? 'text-[#2563EB] bg-blue-50/80'
-                  : 'text-[#64748B] hover:text-[#0C1220] hover:bg-[#F1F0EC]'
-              }`}
-            >
-              Team
-            </button>
-
-            <button
-              onClick={() => handleClick('contact')}
-              className={`px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all cursor-pointer border-none ${
-                activeSection === 'contact'
-                  ? 'text-[#2563EB] bg-blue-50/80'
-                  : 'text-[#64748B] hover:text-[#0C1220] hover:bg-[#F1F0EC]'
-              }`}
-            >
-              Contact
-            </button>
-          </div>
-
-          {/* CTA */}
-          <div className="hidden sm:block">
-            <button
-              onClick={() => handleClick('contact')}
-              className="btn-primary text-[13px] py-2 px-4"
-            >
-              <span>Join ACM</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-1.5 text-[#64748B] hover:text-[#0C1220] cursor-pointer border-none bg-transparent rounded-lg hover:bg-[#F1F0EC]"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </nav>
+          </nav>
         </GlassSurface>
 
         {/* Mobile Menu */}

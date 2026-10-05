@@ -137,8 +137,8 @@ section[id] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--color-blue);
-  color: #fff;
+  background-color: #2563EB;
+  color: #FFFFFF;
   font-weight: 600;
   font-size: 14px;
   padding: 10px 22px;
@@ -148,7 +148,8 @@ section[id] {
   transition: all 0.2s ease;
 }
 .btn-primary:hover {
-  background: var(--color-blue-dark);
+  background-color: #1D4ED8;
+  color: #FFFFFF;
   box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
   transform: translateY(-1px);
 }

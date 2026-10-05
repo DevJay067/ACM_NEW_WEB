@@ -3,15 +3,17 @@ import { Loader } from './components/Loader';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { StatementSection } from './components/StatementSection';
+import { FocusAreasSection } from './components/FocusAreasSection';
 import { AboutSection } from './components/AboutSection';
 import { EventsSection } from './components/EventsSection';
 import { TeamSection } from './components/TeamSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 
-const SECTIONS = ['hero', 'statement', 'about', 'events', 'team', 'contact'];
+const SECTIONS = ['hero', 'statement', 'about', 'events', 'focus-areas', 'team', 'contact'];
 
 const MemoizedStatementSection = React.memo(StatementSection);
+const MemoizedFocusAreasSection = React.memo(FocusAreasSection);
 const MemoizedAboutSection = React.memo(AboutSection);
 const MemoizedEventsSection = React.memo(EventsSection);
 const MemoizedTeamSection = React.memo(TeamSection);
@@ -75,6 +77,7 @@ function App() {
           <MemoizedStatementSection />
           <MemoizedAboutSection />
           <MemoizedEventsSection />
+          <MemoizedFocusAreasSection />
           <MemoizedTeamSection />
           <MemoizedContactSection />
         </main>

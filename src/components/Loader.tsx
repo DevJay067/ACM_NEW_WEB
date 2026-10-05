@@ -6,12 +6,11 @@ interface LoaderProps {
   onComplete?: () => void;
 }
 
-const LOG_STEPS = [
-  { threshold: 0, text: '+ SYSTEM BOOT' },
-  { threshold: 18, text: '[0.012s] INITIALIZING ACM KERNEL...' },
-  { threshold: 42, text: '[0.084s] MOUNTING NMIET CHAPTER MODULES...' },
-  { threshold: 68, text: '[0.192s] ESTABLISHING AI AGENT PIPELINE...' },
-  { threshold: 88, text: '[0.340s] VERIFIED // ENTERING PLATFORM' },
+const STATUS_MESSAGES = [
+  "INITIALIZING ACM NMIET KERNEL",
+  "RESOLVING CHAPTER MODULES & ASSETS",
+  "ESTABLISHING AI AGENT PIPELINE",
+  "VERIFIED // ENTERING PLATFORM"
 ];
 
 export const Loader: React.FC<LoaderProps> = ({ onExitStart, onComplete }) => {
@@ -47,7 +46,7 @@ export const Loader: React.FC<LoaderProps> = ({ onExitStart, onComplete }) => {
     };
   }, [shouldSkip, onExitStart, onComplete]);
 
-  // Asset loading state check
+  // Asset loading listener
   useEffect(() => {
     if (shouldSkip) return;
 
@@ -68,7 +67,7 @@ export const Loader: React.FC<LoaderProps> = ({ onExitStart, onComplete }) => {
     };
   }, [shouldSkip]);
 
-  // Progress counter RAF loop (0% -> 100%)
+  // Progress RAF loop (0% -> 100%)
   useEffect(() => {
     if (shouldSkip) return;
 
@@ -83,12 +82,12 @@ export const Loader: React.FC<LoaderProps> = ({ onExitStart, onComplete }) => {
           setIsFinished(true);
           sessionStorage.setItem('acm_loader_seen', 'true');
           onComplete?.();
-        }, 200);
-      }, 100);
+        }, 150);
+      }, 50);
       return () => clearTimeout(timer);
     }
 
-    const duration = 2200; // ~2.2s fast boot
+    const duration = 2200; // ~2.2s clean boot timing
 
     const step = (timestamp: number) => {
       if (!startTimeRef.current) startTimeRef.current = timestamp;
@@ -120,8 +119,8 @@ export const Loader: React.FC<LoaderProps> = ({ onExitStart, onComplete }) => {
             }
 
             onComplete?.();
-          }, 500);
-        }, 200);
+          }, 450);
+        }, 250);
       }
     };
 
@@ -141,76 +140,63 @@ export const Loader: React.FC<LoaderProps> = ({ onExitStart, onComplete }) => {
   const roundedPercent = Math.min(100, Math.floor(progress));
   const paddedCounter = String(roundedPercent).padStart(3, '0') + '%';
 
-  const visibleLogs = LOG_STEPS.filter((step) => progress >= step.threshold);
-  const activeLogIndex = visibleLogs.length - 1;
+  // Calculate current status message index
+  let msgIndex = 0;
+  if (progress >= 85) {
+    msgIndex = 3;
+  } else if (progress >= 55) {
+    msgIndex = 2;
+  } else if (progress >= 25) {
+    msgIndex = 1;
+  }
+  const currentMsg = STATUS_MESSAGES[msgIndex];
 
   return (
     <div
       role="status"
       aria-live="polite"
-      aria-label="High-Tech System Boot Loading Screen"
-      className={`acm-boot-overlay ${isExiting ? 'acm-boot-exit' : ''}`}
+      aria-label="System Boot Loading Screen"
+      className={`acm-simple-loader-overlay ${isExiting ? 'exiting' : ''}`}
     >
-      {/* Background Matrix Grid Overlay */}
-      <div className="acm-boot-grid" />
-      <div className="acm-boot-scanline" />
-
-      {/* Top Header Row */}
-      <div className="acm-boot-header">
-        <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-[#38BDF8]">
-          <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
-          <span>SYSTEM BOOT // ONLINE</span>
-        </div>
-        <div className="text-xs font-mono tracking-widest text-slate-400 uppercase">
-          EST. 2025 // NMIET CHAPTER
-        </div>
+      {/* Top Header Labels */}
+      <div className="flex justify-between items-center text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#777777] z-10 w-full">
+        <span>ACM NMIET STUDENT CHAPTER</span>
+        <span>EST. 2025 · CHAPTER BOOT</span>
       </div>
 
-      {/* Main Left Log Console */}
-      <div className="acm-boot-console">
-        <div className="acm-boot-logs space-y-2">
-          {visibleLogs.map((log, idx) => {
-            const isActive = idx === activeLogIndex;
-            return (
-              <div
-                key={idx}
-                className={`font-mono text-xs sm:text-sm md:text-base tracking-wider flex items-center gap-2 transition-all duration-200 ${
-                  isActive
-                    ? 'text-white font-bold'
-                    : 'text-slate-400 font-medium opacity-80'
-                }`}
-              >
-                <span className={isActive ? 'text-[#38BDF8]' : 'text-slate-500'}>
-                  {idx === 0 ? '●' : '›'}
-                </span>
-                <span>{log.text}</span>
-                {isActive && roundedPercent < 100 && (
-                  <span className="inline-block w-2 h-4 bg-[#38BDF8] animate-pulse ml-1" />
-                )}
-              </div>
-            );
-          })}
+      {/* Center-Left Status Console */}
+      <div className="my-auto max-w-3xl w-full text-left z-10 py-8 px-1 sm:px-2">
+        {/* Pulsing Dot + Label */}
+        <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#2563EB] tracking-widest uppercase mb-3">
+          <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+          <span>SYSTEM BOOT</span>
         </div>
 
-        {/* Dynamic Horizontal Progress Fill Line Under Console */}
-        <div className="acm-boot-line-track">
+        {/* Dynamic Single Status Message */}
+        <div className="min-h-[2.5rem] flex items-center mb-5">
+          <h1 className="font-mono text-xl sm:text-2xl md:text-3xl font-extrabold text-[#111111] tracking-tight uppercase leading-snug">
+            {currentMsg}
+          </h1>
+        </div>
+
+        {/* Thin ACM Blue Progress Fill Line */}
+        <div className="w-44 sm:w-60 h-[2px] bg-[#E5E5E0] rounded-full overflow-hidden relative">
           <div
-            className="acm-boot-line-fill"
+            className="h-full bg-[#2563EB] transition-all duration-100 ease-out rounded-full"
             style={{ width: `${progress}%` }}
           />
         </div>
       </div>
 
-      {/* Bottom Footer Row */}
-      <div className="acm-boot-footer">
-        <div className="text-xs font-mono uppercase tracking-widest text-slate-400 max-w-xs leading-relaxed">
-          ACM NMIET STUDENT CHAPTER
-          <br />
-          <span className="text-[#38BDF8] font-semibold">INNOVATING FOR THE FUTURE // NMIET</span>
-        </div>
+      {/* Bottom Footer Labels */}
+      <div className="flex justify-between items-end text-[10px] sm:text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#777777] z-10 w-full">
+        <span>INNOVATING FOR THE FUTURE // NMIET</span>
 
-        {/* Fixed 3-Digit Percentage Counter (000% -> 100%) in Bottom Right */}
-        <div className="acm-boot-counter" aria-hidden="true">
+        {/* Bottom-Right 3-Digit Percentage Counter */}
+        <div
+          aria-hidden="true"
+          className="font-mono text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#111111] leading-none"
+        >
           {paddedCounter}
         </div>
       </div>

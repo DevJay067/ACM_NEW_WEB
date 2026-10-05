@@ -193,6 +193,63 @@
     "location": "NMIET, Greater Noida\nUttar Pradesh, India",
     "image": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80"
   },
+  "focusAreas": {
+    "eyebrow": "OUR FOCUS AREAS",
+    "title": "Our Focus Areas",
+    "subtitle": "Explore the diverse technical domains where we learn, build, and grow together. We focus on practical skills that bridge the gap between academia and industry.",
+    "sectionTitle": "Technical Domains We're Passionate About",
+    "sectionDescription": "At ACM NMIET, we don't just talk about technology; we dive deep. From building scalable applications to securing digital infrastructures, our focus areas cover the most vital skills in today's tech landscape.",
+    "domains": [
+      {
+        "id": "web-app",
+        "title": "Web & App Dev",
+        "status": "Active",
+        "icon": "Laptop",
+        "description": "Building responsive websites and cross-platform mobile applications using modern frameworks and best practices.",
+        "technologies": ["React", "Node.js", "Flutter"]
+      },
+      {
+        "id": "ai-ml",
+        "title": "AI & Machine Learning",
+        "status": "Active",
+        "icon": "Brain",
+        "description": "Exploring the frontiers of intelligence, training data models, and implementing predictive algorithms to solve real problems.",
+        "technologies": ["Python", "TensorFlow", "PyTorch"]
+      },
+      {
+        "id": "competitive-coding",
+        "title": "Competitive Coding",
+        "status": "Active",
+        "icon": "Code2",
+        "description": "Mastering algorithms and data structures to efficiently solve complex coding challenges and excel in competitions.",
+        "technologies": ["C++", "Java", "DSA"]
+      },
+      {
+        "id": "cybersecurity",
+        "title": "Cybersecurity",
+        "status": "Coming Soon",
+        "icon": "Shield",
+        "description": "Learning to protect systems, networks, and programs from digital attacks through ethical hacking and defense strategies.",
+        "technologies": ["Ethical Hacking", "Network Security", "Linux"]
+      },
+      {
+        "id": "ui-ux",
+        "title": "UI/UX & Design",
+        "status": "Active",
+        "icon": "Palette",
+        "description": "Designing intuitive, accessible, and aesthetically pleasing user interfaces and seamless user experiences.",
+        "technologies": ["Figma", "Wireframing", "Design Systems"]
+      },
+      {
+        "id": "data-science",
+        "title": "Data Science",
+        "status": "Planned",
+        "icon": "BarChart3",
+        "description": "Unlocking actionable insights from raw data to drive decision-making and business innovation through analytics.",
+        "technologies": ["Pandas", "Data Mining", "SQL"]
+      }
+    ]
+  },
   "loader": {
     "labels": {
       "topLeft": "ACM NMIET STUDENT CHAPTER",
